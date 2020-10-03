@@ -1,10 +1,6 @@
-# Pokedex
+# Pokédex
 
-[![Travis](https://img.shields.io/travis/alik0211/pokedex/master.svg?style=flat-square)](https://travis-ci.com/alik0211/pokedex)
-[![Dependency Status](https://img.shields.io/david/alik0211/pokedex.svg?label=deps&style=flat-square)](https://david-dm.org/alik0211/pokedex)
-[![devDependency Status](https://img.shields.io/david/dev/alik0211/pokedex.svg?label=devDeps&style=flat-square)](https://david-dm.org/alik0211/pokedex?type=dev)
-
-List of pokemons on the basis of React + Redux
+Pokédex made using the [Pokéapi](https://pokeapi.co/), [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/)
 
 ## Available Scripts
 
@@ -25,7 +21,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-## Related
-
-- [YouTube Meta](https://github.com/alik0211/youtube-meta) - Shows meta information about the video on YouTube
