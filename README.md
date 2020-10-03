@@ -1,6 +1,6 @@
 # Pokédex
 
-Pokédex made using the [Pokéapi](https://pokeapi.co/), React and the Material-UI package
+Pokédex made using the [Pokéapi](https://pokeapi.co/), [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/)
 
 ## Available Scripts
 
