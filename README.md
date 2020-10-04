@@ -4,6 +4,8 @@
 
 ### Pokédex made using the [Pokéapi](https://pokeapi.co/), [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/)
 
+### Live [here](https://electromorphous.github.io/Pok-dex/)
+
 ## Available Scripts
 
 In the project directory, you can run:
