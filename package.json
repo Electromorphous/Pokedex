@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "author": "Electromorphous <pstation.474@gmail.com> (https://electromorphous.github.io)",
-  "homepage": "https://Electromorhpous.github.io/Pok-dex/",
+  "homepage": "https://Electromorhpous.github.io/Pokedex/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
