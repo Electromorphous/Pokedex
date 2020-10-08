@@ -1,15 +1,13 @@
-*,
-:before,
-:after {
-  -webkit-box-sizing: border-box;
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
-  height: 100%;
-  width: 100%;
-  padding: 10px;
+  height: 80%;
+  width: 80%;
+  padding-top: 10px;
+  margin: 0 auto;
   object-fit: contain;
 }
