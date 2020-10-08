@@ -6,7 +6,7 @@ export default function Content({inputText}) {
   const [pokemons, setPokemons] = useState([])
 
   async function fetchData() {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=80");
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/");
     res
       .json()
       .then(res => {
