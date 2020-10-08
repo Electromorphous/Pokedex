@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from '@material-ui/core'
 import PokemonCard from './PokemonCard.jsx'
-import api from '../utils/api.js'
 
 export default function Content() {
   const [pokemons, setPokemons] = useState([])
 
-  api.getPokemons().then(pokemons => {
-    setPokemons(pokemons)
-  })
+  async function fetchData() {
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=20");
+    res
+      .json()
+      .then(res => {
+        const pok = res.results.map(pokemon => {
+          const { url } = pokemon
+          const id = url.substring(34, url.length - 1)
 
+          return {
+            ...pokemon,
+            id
+          }
+        })
+
+        setPokemons(pok)}
+      )
+  }
+
+  useEffect(() => {
+    fetchData();
+  });
+  
   const getPokemonCard = pokemon => {
     return (
       <Grid item xs={12} sm={6} md={3} key={pokemon.id}>
