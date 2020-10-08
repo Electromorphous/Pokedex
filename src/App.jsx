@@ -1,7 +1,7 @@
-import React from 'react'
-import { Grid } from '@material-ui/core'
-import Header from './components/Header.jsx'
-import Content from './components/Content.jsx'
+import React, { useState } from "react";
+import { Grid } from "@material-ui/core";
+import Header from "./components/Header.jsx";
+import Content from "./components/Content.jsx";
 
 export default function App() {
   // const [isLoading, setIsLoading] = useState(false)
@@ -57,6 +57,8 @@ export default function App() {
   // return <ul className="pokemons">{pokemonList}</ul>
   // }
 
+  const [inputText, setInputText] = useState("");
+
   return (
     // <div className="page">
     //   {error && <div className="page__error">{error}</div>}
@@ -68,12 +70,12 @@ export default function App() {
 
     <Grid container direction="column">
       <Grid item xs={12}>
-        <Header />
+        <Header inputText={inputText} setInputText={setInputText} />
       </Grid>
 
       <Grid item xs={12}>
-        <Content />
+        <Content inputText={inputText} />
       </Grid>
     </Grid>
-  )
+  );
 }

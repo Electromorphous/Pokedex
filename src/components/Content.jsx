@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Grid } from '@material-ui/core'
 import PokemonCard from './PokemonCard.jsx'
 
-export default function Content() {
+export default function Content({inputText}) {
   const [pokemons, setPokemons] = useState([])
 
   async function fetchData() {
@@ -36,6 +36,8 @@ export default function Content() {
     )
   }
 
+  const filteredPokemons = pokemons.filter(pokemon => pokemon.name.includes(inputText.toLowerCase()) )
+
   return (
     <Grid container>
       {/* left padding */}
@@ -62,7 +64,7 @@ export default function Content() {
           <PokemonCard />
         </Grid> */}
 
-        {pokemons.map(pokemon => {
+        {filteredPokemons.map(pokemon => {
           return getPokemonCard(pokemon)
         })}
       </Grid>

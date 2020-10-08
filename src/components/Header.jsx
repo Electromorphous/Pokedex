@@ -85,8 +85,12 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function SearchAppBar() {
-  const classes = useStyles()
+export default function SearchAppBar({inputText, setInputText}) {
+  const classes = useStyles();
+
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  }
 
   return (
     <div className={classes.root}>
@@ -110,6 +114,8 @@ export default function SearchAppBar() {
                   <SearchIcon />
                 </div>
                 <InputBase
+                  value={inputText}
+                  onChange={inputTextHandler}
                   placeholder="Search…"
                   classes={{
                     root: classes.inputRoot,
