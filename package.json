@@ -2,8 +2,8 @@
   "name": "pokedex",
   "version": "3.0.0",
   "private": true,
-  "author": "Ali Gasymov <alik0211alik@gmail.com> (https://www.gasymov.com/)",
-  "homepage": "https://alik0211.github.io/pok-dex/",
+  "author": "Electromorphous <pstation.474@gmail.com> (https://electromorphous.github.io)",
+  "homepage": "https://Electromorphous.github.io/pok-dex/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
