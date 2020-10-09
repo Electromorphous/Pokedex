@@ -6,7 +6,7 @@ export default function Content({inputText}) {
   const [pokemons, setPokemons] = useState([])
 
   async function fetchData() {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/");
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1050");
     res
       .json()
       .then(res => {
@@ -65,7 +65,7 @@ export default function Content({inputText}) {
         </Grid> */}
 
         {filteredPokemons.map(pokemon => {
-          return getPokemonCard(pokemon)
+            return getPokemonCard(pokemon)
         })}
       </Grid>
 
