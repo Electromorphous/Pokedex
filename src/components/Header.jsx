@@ -94,7 +94,7 @@ export default function SearchAppBar({inputText, setInputText}) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBarClass}>
+      <AppBar className={classes.appBarClass}>
         <Toolbar>
           <Grid container>
             {/* left padding */}
