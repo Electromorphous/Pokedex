@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import { Grid } from '@material-ui/core'
-import PokemonCard from './PokemonCard.jsx'
+import React, { useEffect, useState } from "react";
+import { Grid } from "@material-ui/core";
+import PokemonCard from "./PokemonCard.jsx";
 
-export default function Content({inputText}) {
-  const [pokemons, setPokemons] = useState([])
+export default function Content({ inputText }) {
+  const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=649");   // limit = 649
-    res
-      .json()
-      .then(res => {
-        const pok = res.results.map(pokemon => {
-          const { url } = pokemon
-          const id = url.substring(34, url.length - 1)
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=20"); // limit = 649
+    res.json().then((res) => {
+      const pok = res.results.map((pokemon) => {
+        const { url } = pokemon;
+        const id = url.substring(34, url.length - 1);
 
-          return {
-            ...pokemon,
-            id
-          }
-        })
+        return {
+          ...pokemon,
+          id,
+        };
+      });
 
-        setPokemons(pok)}
-      )
+      setPokemons(pok);
+    });
   }
 
   useEffect(() => {
     fetchData();
-  });
-  
-  const getPokemonCard = pokemon => {
+  }, []);
+
+  const getPokemonCard = (pokemon) => {
     return (
       <Grid item xs={12} sm={6} md={3} key={pokemon.id}>
         <PokemonCard pokemon={pokemon} />
       </Grid>
-    )
-  }
+    );
+  };
 
-  const filteredPokemons = pokemons.filter(pokemon => pokemon.name.includes(inputText.toLowerCase()) )
+  const filteredPokemons = pokemons.filter((pokemon) =>
+    pokemon.name.includes(inputText.toLowerCase())
+  );
 
   return (
     <Grid container>
@@ -45,13 +45,13 @@ export default function Content({inputText}) {
 
       {/* content */}
       <Grid item container xs={10} spacing={3} justify="center">
-        {filteredPokemons.map(pokemon => {
-            return getPokemonCard(pokemon)
+        {filteredPokemons.map((pokemon) => {
+          return getPokemonCard(pokemon);
         })}
       </Grid>
 
       {/* right padding */}
       <Grid item xs={1} />
     </Grid>
-  )
+  );
 }
