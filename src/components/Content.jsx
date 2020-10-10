@@ -45,25 +45,6 @@ export default function Content({inputText}) {
 
       {/* content */}
       <Grid item container xs={10} spacing={3} justify="center">
-        {/* <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard pokemon={pokmon} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <PokemonCard />
-        </Grid> */}
-
         {filteredPokemons.map(pokemon => {
             return getPokemonCard(pokemon)
         })}
