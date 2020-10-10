@@ -13,8 +13,8 @@ img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
 }
 
 .card {
-  transition: all 0.2s;
+  transition: all 0.25s;
   &:hover {
-    scale: 1.05;
+    transform: scale(1.05);   
   }
 }

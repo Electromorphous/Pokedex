@@ -34,7 +34,7 @@ export default function PokemonCard({ pokemon }) {
           alt={pokemon.name}
           height="250"
           src={imageURL}
-          title="Pokemon image"
+          title={pokemon.name}
         />
         <CardContent>
           <Typography gutterBottom className={classes.pokemonName}>
