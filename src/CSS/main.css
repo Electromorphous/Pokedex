@@ -8,8 +8,17 @@
 img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
   height: 80%;
   width: 80%;
-  padding-top: 10px;
+  padding-top: 15px;
   margin: 0 auto;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.card {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  scale: 1.05;
 }

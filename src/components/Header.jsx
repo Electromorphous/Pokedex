@@ -116,7 +116,7 @@ export default function SearchAppBar({inputText, setInputText}) {
                 <InputBase
                   value={inputText}
                   onChange={inputTextHandler}
-                  placeholder="Search…"
+                  placeholder="Search"
                   classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput

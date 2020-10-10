@@ -9,10 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(() => ({
   card: {
     borderRadius: 17,
-    height: 300,
-    '&:hover': {
-      backgroundColor: '#eee'
-    }
+    height: 300
   },
   cardActionArea: {
     height: 300
@@ -29,9 +26,9 @@ export default function PokemonCard({ pokemon }) {
     pokemon.id
   }.svg`
   return (
+    <div className="card">
     <Card className={classes.card} elevation={3}>
       <CardActionArea className={classes.cardActionArea}>
-        {/* <div className="pokemonImageDiv"> */}
         <CardMedia
           component="img"
           alt={pokemon.name}
@@ -39,7 +36,6 @@ export default function PokemonCard({ pokemon }) {
           src={imageURL}
           title="Pokemon image"
         />
-        {/* </div> */}
         <CardContent>
           <Typography gutterBottom className={classes.pokemonName}>
             {pokemon.name}
@@ -47,5 +43,6 @@ export default function PokemonCard({ pokemon }) {
         </CardContent>
       </CardActionArea>
     </Card>
+    </div>
   )
 }
