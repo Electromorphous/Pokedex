@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom'
 import App from './App.jsx'
 import './CSS/main.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+
+// removed strict mode, that will fix few double renders
+ReactDOM.render(<App />, document.getElementById('root'))
