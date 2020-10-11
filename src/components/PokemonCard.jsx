@@ -32,21 +32,21 @@ export default function PokemonCard({ pokemon }) {
   fac
     .getColorAsync(imageURL)
     .then(function (color) {
-      setBgColor(color.hexa);
-      console.log(color);
+      setBgColor(`${color.hex}77`);
+      // console.log(color);
     })
     .catch(function (e) {
       console.log(e);
     });
 
-  useEffect(() => {
-    console.log(
-      `${pokemon.name} card rendered ${counter.current} time${
-        counter.current > 1 ? "s" : ""
-      }`
-    );
-    counter.current += 1;
-  });
+  // useEffect(() => {
+  //   console.log(
+  //     `${pokemon.name} card rendered ${counter.current} time${
+  //       counter.current > 1 ? "s" : ""
+  //     }`
+  //   );
+  //   counter.current += 1;
+  // });
 
   return (
     <div className="card">
