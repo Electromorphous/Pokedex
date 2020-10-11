@@ -20,6 +20,10 @@ img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
 }
 
 .card:hover {
+  border-radius: 14px;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+  -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.527);
+          box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.527);
 }
+/*# sourceMappingURL=main.css.map */
