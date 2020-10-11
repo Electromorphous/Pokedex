@@ -5,15 +5,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import * as Vibrant from "node-vibrant";
-
-let backgroundColor;
+import FastAverageColor from "fast-average-color";
 
 const useStyles = makeStyles(() => ({
   card: {
     borderRadius: 14,
     height: 300,
-    backgroundColor: backgroundColor,
   },
   cardActionArea: {
     height: 300,
@@ -26,10 +23,21 @@ const useStyles = makeStyles(() => ({
 
 export default function PokemonCard({ pokemon }) {
   const classes = useStyles();
+  const [bgColor, setBgColor] = useState();
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
-  // u had typed the url twice 🤦🏻‍♂️
-  const vib = new Vibrant(imageURL);
   const counter = useRef(0);
+
+  const fac = new FastAverageColor();
+
+  fac
+    .getColorAsync(imageURL)
+    .then(function (color) {
+      setBgColor(color.hexa);
+      console.log(color);
+    })
+    .catch(function (e) {
+      console.log(e);
+    });
 
   useEffect(() => {
     console.log(
@@ -39,16 +47,6 @@ export default function PokemonCard({ pokemon }) {
     );
     counter.current += 1;
   });
-
-  const [bgColor, setBgColor] = useState();
-
-  useEffect(() => {
-    vib.getPalette((err, palette) => {
-      backgroundColor = `rgb(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]})`;
-      setBgColor(backgroundColor);
-    });
-    return () => {};
-  }, []);
 
   return (
     <div className="card">
