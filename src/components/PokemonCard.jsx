@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import FastAverageColor from "fast-average-color";
+import * as Vibrant from "node-vibrant";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -27,17 +27,13 @@ export default function PokemonCard({ pokemon }) {
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
   const counter = useRef(0);
 
-  const fac = new FastAverageColor();
-
-  fac
-    .getColorAsync(imageURL)
-    .then(function (color) {
-      setBgColor(`${color.hex}77`);
-      // console.log(color);
-    })
-    .catch(function (e) {
-      console.log(e);
-    });
+  let v = new Vibrant(imageURL);
+  v.getPalette().then((palette) => {
+    // console.log(palette);
+    setBgColor(
+      `rgba(${palette.Vibrant._rgb[0]},${palette.Vibrant._rgb[1]},${palette.Vibrant._rgb[2]}, 0.6)`
+    );
+  });
 
   // useEffect(() => {
   //   console.log(
