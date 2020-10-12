@@ -31,7 +31,7 @@ export default function PokemonCard({ pokemon }) {
   v.getPalette().then((palette) => {
     // console.log(palette);
     setBgColor(
-      `rgba(${palette.Vibrant._rgb[0]},${palette.Vibrant._rgb[1]},${palette.Vibrant._rgb[2]}, 0.6)`
+      `rgba(${palette.Vibrant._rgb[0]},${palette.Vibrant._rgb[1]},${palette.Vibrant._rgb[2]}, 0.5)`
     );
   });
 
