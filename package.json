@@ -5,16 +5,16 @@
   "author": "Electromorphous <pstation.474@gmail.com> (https://electromorphous.github.io)",
   "homepage": "https://Electromorphous.github.io/Pokedex/",
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.10.0",
-    "node-vibrant": "^3.1.5",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
+    "node-vibrant": "^3.1.6",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "predeploy": "npm run build",
