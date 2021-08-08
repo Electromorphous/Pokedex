@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+
+import { Grid } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import * as Vibrant from "node-vibrant";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -27,14 +28,6 @@ export default function PokemonCard({ pokemon }) {
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
   // const counter = useRef(0);
 
-  let v = new Vibrant(imageURL);
-  v.getPalette().then((palette) => {
-    // console.log(palette);
-    setBgColor(
-      `rgba(${palette.Vibrant._rgb[0]},${palette.Vibrant._rgb[1]},${palette.Vibrant._rgb[2]}, 0.5)`
-    );
-  });
-
   // useEffect(() => {
   //   console.log(
   //     `${pokemon.name} card rendered ${counter.current} time${
@@ -44,28 +37,50 @@ export default function PokemonCard({ pokemon }) {
   //   counter.current += 1;
   // });
 
+  // console.log(colorValue);
+
+  // useEffect(() => {
+  //   // if (pokemon.id in colorValue) {
+  //   //   setBgColor(colorValue[pokemon.id]);
+  //   // } else {
+  //   let v = new Vibrant(imageURL);
+  //   v.getPalette().then((palette) => {
+  //     console.log(palette);
+  //     setBgColor(
+  //       `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.5)`
+  //     );
+  //     // const obj = {};
+  //     // obj[pokemon.id] = bgColor;
+  //     // colorValue = { ...colorValue, obj };
+  //     // console.log(colorValue);
+  //   });
+  //   console.log(pokemon.hidden);
+  // }, []);
+
   return (
-    <div className="card">
-      <Card
-        className={classes.card}
-        style={{ background: bgColor }}
-        elevation={3}
-      >
-        <CardActionArea className={classes.cardActionArea}>
-          <CardMedia
-            component="img"
-            alt={pokemon.name}
-            height="250"
-            src={imageURL}
-            title={pokemon.name}
-          />
-          <CardContent>
-            <Typography gutterBottom className={classes.pokemonName}>
-              {pokemon.name}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </div>
+    <Grid className="card-parent" item xs={12} sm={6} md={3} key={pokemon.id}>
+      <div className="card">
+        <Card
+          className={classes.card}
+          style={{ background: pokemon.background }}
+          elevation={3}
+        >
+          <CardActionArea className={classes.cardActionArea}>
+            <CardMedia
+              component="img"
+              alt={pokemon.name}
+              height="250"
+              src={imageURL}
+              title={pokemon.name}
+            />
+            <CardContent>
+              <Typography gutterBottom className={classes.pokemonName}>
+                {pokemon.name}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </div>
+    </Grid>
   );
 }

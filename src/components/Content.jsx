@@ -1,42 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Grid } from "@material-ui/core";
 import PokemonCard from "./PokemonCard.jsx";
+import * as Vibrant from "node-vibrant";
 
-export default function Content({ inputText }) {
+function usePokemons() {
   const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=80"); // max limit = 649
-    res.json().then((res) => {
-      const pok = res.results.map((pokemon) => {
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=400"); // max limit = 649
+    const res = await data.json();
+
+    return await Promise.all(
+      res.results.map(async (pokemon) => {
         const { url } = pokemon;
         const id = url.substring(34, url.length - 1);
+        let v = new Vibrant(
+          `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+        );
+        const palette = await v.getPalette();
 
         return {
           ...pokemon,
+          background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.5)`,
           id,
         };
-      });
-
-      setPokemons(pok);
-    });
+      })
+    );
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData().then(setPokemons);
   }, []);
 
-  const getPokemonCard = (pokemon) => {
-    return (
-      <Grid item xs={12} sm={6} md={3} key={pokemon.id}>
-        <PokemonCard pokemon={pokemon} />
-      </Grid>
-    );
-  };
+  return useMemo(() => {
+    return { pokemons };
+  }, [pokemons]);
+}
 
-  const filteredPokemons = pokemons.filter((pokemon) =>
-    pokemon.name.includes(inputText.toLowerCase())
-  );
+export default function Content({ inputText }) {
+  const { pokemons } = usePokemons();
 
   return (
     <Grid container>
@@ -44,10 +46,14 @@ export default function Content({ inputText }) {
       <Grid item xs={1} />
 
       {/* content */}
-      <Grid item container xs={10} spacing={3} justify="center">
-        {filteredPokemons.map((pokemon) => {
-          return getPokemonCard(pokemon);
-        })}
+      <Grid item container xs={10} spacing={3} justifyContent="center">
+        {pokemons.map((pokemon) =>
+          !!pokemon.name.includes(inputText.toLowerCase()) ? (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ) : (
+            false
+          )
+        )}
       </Grid>
 
       {/* right padding */}
