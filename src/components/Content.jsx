@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, CircularProgress } from "@material-ui/core";
 import PokemonCard from "./PokemonCard.jsx";
 import * as Vibrant from "node-vibrant";
 
@@ -21,7 +21,7 @@ function usePokemons() {
 
         return {
           ...pokemon,
-          background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.5)`,
+          background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.6)`,
           id,
         };
       })
@@ -41,23 +41,33 @@ export default function Content({ inputText }) {
   const { pokemons } = usePokemons();
 
   return (
-    <Grid container>
-      {/* left padding */}
-      <Grid item xs={1} />
+    <>
+      {/* <CircularProgress color="secondary" /> */}
 
-      {/* content */}
-      <Grid item container xs={10} spacing={3} justifyContent="center">
-        {pokemons.map((pokemon) =>
-          !!pokemon.name.includes(inputText.toLowerCase()) ? (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
-          ) : (
-            false
-          )
-        )}
-      </Grid>
+      {pokemons.length === 0 ? (
+        <CircularProgress color="secondary" />
+      ) : (
+        <Grid container>
+          {/* left padding */}
+          <Grid item xs={1} />
 
-      {/* right padding */}
-      <Grid item xs={1} />
-    </Grid>
+          {/* content */}
+          <Grid item container xs={10} spacing={3} justifyContent="center">
+            {pokemons.map((pokemon) =>
+              !!pokemon.name.includes(inputText.toLowerCase()) ? (
+                <PokemonCard key={pokemon.id} pokemon={pokemon}>
+                  {/* {console.log(5)} */}
+                </PokemonCard>
+              ) : (
+                false
+              )
+            )}
+          </Grid>
+
+          {/* right padding */}
+          <Grid item xs={1} />
+        </Grid>
+      )}
+    </>
   );
 }

@@ -4,8 +4,14 @@
   padding: 0;
 }
 
+.MuiCircularProgress-root {
+  margin-top: 35vh;
+  margin-left: 46vw;
+}
+
 .card-parent {
   // content-visibility: auto;
+  // contain-intrinsic-size: 300px;
 
   .card {
     border-radius: 14px;
@@ -16,7 +22,6 @@
       z-index: 10;
     }
     transition: all 0.25s;
-    // contain-intrinsic-size: 300px;
 
     img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
       height: 80%;

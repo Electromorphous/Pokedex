@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 
 export default function PokemonCard({ pokemon }) {
   const classes = useStyles();
-  const [bgColor, setBgColor] = useState();
+  // const [bgColor, setBgColor] = useState();
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
   // const counter = useRef(0);
 
