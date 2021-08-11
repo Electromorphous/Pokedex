@@ -33,8 +33,6 @@ export default function PokemonCard({ pokemon }) {
     );
   });
 
-  console.log(pokemon);
-
   return (
     <div className="card">
       <Card

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
+import { List } from "react-virtualized";
 import PokemonCard from "./PokemonCard.jsx";
 import { CircularProgress } from "@material-ui/core";
 
@@ -7,7 +8,7 @@ export default function Content({ inputText }) {
   const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=80"); // max limit = 649
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=649"); // max limit = 649
     res.json().then((res) => {
       const pok = res.results.map((pokemon) => {
         const { url } = pokemon;
@@ -36,24 +37,42 @@ export default function Content({ inputText }) {
       {filteredPokemons.length === 0 ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid container>
-          {/* left padding */}
-          <Grid item xs={1} />
+        <>
+          <List
+            height={400}
+            width={800}
+            rowCount={filteredPokemons.length}
+            rowHeight={320}
+            rowRenderer={({ key, index, style, parent }) => {
+              const pokemon = filteredPokemons[index];
+              // return (
+              //   <div key={key} style={style}>
+              //     <h2>Hello {pokemon.id}</h2>
+              //     {console.log(pokemon)}
+              //   </div>
+              // );
 
-          {/* content */}
-          <Grid item container xs={10} spacing={3} justify="center">
-            {filteredPokemons.map((pokemon) => {
               return (
-                <Grid item xs={12} sm={6} md={3} key={pokemon.id}>
-                  <PokemonCard pokemon={pokemon} />
-                </Grid>
-              );
-            })}
-          </Grid>
+                <>
+                  <Grid container>
+                    {/* left padding */}
+                    <Grid item xs={1} />
 
-          {/* right padding */}
-          <Grid item xs={1} />
-        </Grid>
+                    {/* content */}
+                    <Grid item container xs={10} spacing={3} justify="center">
+                      <Grid item xs={12} sm={6} md={3} key={key} style={style}>
+                        <PokemonCard pokemon={pokemon} />
+                      </Grid>
+                    </Grid>
+
+                    {/* right padding */}
+                    <Grid item xs={1} />
+                  </Grid>
+                </>
+              );
+            }}
+          />
+        </>
       )}
     </>
   );
