@@ -7,10 +7,6 @@ export default function App() {
   return <Home />;
 }
 
-function Pokemonpage() {
-  return <div className="pokemon"> </div>;
-}
-
 function Home() {
   const [inputText, setInputText] = useState("");
   return (
