@@ -4,48 +4,31 @@
   padding: 0;
 }
 
-<<<<<<< HEAD
 .MuiCircularProgress-root {
   margin-top: 35vh;
   margin-left: 46vw;
 }
 
-// .card-parent {
-// content-visibility: auto;
-// contain-intrinsic-size: 300px;
-=======
 .card-parent {
   // content-visibility: auto;
->>>>>>> parent of 51c661b... create temporary loader
+  // contain-intrinsic-size: 300px;
 
-// .MuiGrid-root.MuiGrid-item {
-.card {
-  border-radius: 14px;
+  .card {
+    border-radius: 14px;
 
-<<<<<<< HEAD
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-  }
-  transition: all 0.25s;
-=======
     &:hover {
       transform: scale(1.05);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       z-index: 10;
     }
     transition: all 0.25s;
-    // contain-intrinsic-size: 300px;
->>>>>>> parent of 51c661b... create temporary loader
 
-  img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
-    height: 80%;
-    width: 80%;
-    padding-top: 15px;
-    margin: 0 auto;
-    object-fit: contain;
+    img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
+      height: 80%;
+      width: 80%;
+      padding-top: 15px;
+      margin: 0 auto;
+      object-fit: contain;
+    }
   }
 }
-// }
-// }
