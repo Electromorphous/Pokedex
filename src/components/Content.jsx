@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
-import { List } from "react-virtualized";
+import React, { useEffect, useState, useMemo } from "react";
+import { Grid } from "@material-ui/core";
 import PokemonCard from "./PokemonCard.jsx";
 import { CircularProgress } from "@material-ui/core";
 
@@ -16,6 +17,7 @@ export default function Content({ inputText }) {
 
         return {
           ...pokemon,
+          background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.5)`,
           id,
         };
       });
@@ -33,47 +35,23 @@ export default function Content({ inputText }) {
   );
 
   return (
-    <>
-      {filteredPokemons.length === 0 ? (
-        <CircularProgress color="secondary" />
-      ) : (
-        <>
-          <List
-            height={400}
-            width={800}
-            rowCount={filteredPokemons.length}
-            rowHeight={320}
-            rowRenderer={({ key, index, style, parent }) => {
-              const pokemon = filteredPokemons[index];
-              // return (
-              //   <div key={key} style={style}>
-              //     <h2>Hello {pokemon.id}</h2>
-              //     {console.log(pokemon)}
-              //   </div>
-              // );
+    <Grid container>
+      {/* left padding */}
+      <Grid item xs={1} />
 
-              return (
-                <>
-                  <Grid container>
-                    {/* left padding */}
-                    <Grid item xs={1} />
+      {/* content */}
+      <Grid item container xs={10} spacing={3} justifyContent="center">
+        {pokemons.map((pokemon) =>
+          !!pokemon.name.includes(inputText.toLowerCase()) ? (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ) : (
+            false
+          )
+        )}
+      </Grid>
 
-                    {/* content */}
-                    <Grid item container xs={10} spacing={3} justify="center">
-                      <Grid item xs={12} sm={6} md={3} key={key} style={style}>
-                        <PokemonCard pokemon={pokemon} />
-                      </Grid>
-                    </Grid>
-
-                    {/* right padding */}
-                    <Grid item xs={1} />
-                  </Grid>
-                </>
-              );
-            }}
-          />
-        </>
-      )}
-    </>
+      {/* right padding */}
+      <Grid item xs={1} />
+    </Grid>
   );
 }
