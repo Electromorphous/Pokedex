@@ -7,7 +7,7 @@ function usePokemons() {
   const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=648"); // max limit = 649
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=400"); // max limit = 649
     const res = await data.json();
 
     return await Promise.all(
@@ -42,8 +42,6 @@ export default function Content({ inputText }) {
 
   return (
     <>
-      {/* <CircularProgress color="secondary" /> */}
-
       {pokemons.length === 0 ? (
         <CircularProgress color="secondary" />
       ) : (
@@ -54,7 +52,7 @@ export default function Content({ inputText }) {
           {/* content */}
           <Grid item container xs={10} spacing={3} justifyContent="center">
             {pokemons.map((pokemon) =>
-              !!pokemon.name.includes(inputText.toLowerCase()) ? (
+              pokemon.name.includes(inputText.toLowerCase()) ? (
                 <PokemonCard key={pokemon.id} pokemon={pokemon}>
                   {/* {console.log(5)} */}
                 </PokemonCard>
