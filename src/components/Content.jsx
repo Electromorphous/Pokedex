@@ -7,10 +7,10 @@ function usePokemons() {
   const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=400"); // max limit = 649
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=40"); // max limit = 649
     const res = await data.json();
 
-    return await Promise.all(
+    return Promise.all(
       res.results.map(async (pokemon) => {
         const { url } = pokemon;
         const id = url.substring(34, url.length - 1);
@@ -37,8 +37,9 @@ function usePokemons() {
   }, [pokemons]);
 }
 
-export default function Content({ inputText }) {
+export default function Content(props) {
   const { pokemons } = usePokemons();
+  const { inputText } = props;
 
   return (
     <>
@@ -53,9 +54,7 @@ export default function Content({ inputText }) {
           <Grid item container xs={10} spacing={3} justifyContent="center">
             {pokemons.map((pokemon) =>
               pokemon.name.includes(inputText.toLowerCase()) ? (
-                <PokemonCard key={pokemon.id} pokemon={pokemon}>
-                  {/* {console.log(5)} */}
-                </PokemonCard>
+                <PokemonCard key={pokemon.id} {...{ props, pokemon }} />
               ) : (
                 false
               )

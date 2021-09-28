@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React from "react";
 import { Grid } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -22,7 +21,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function PokemonCard({ pokemon }) {
+export default function PokemonCard(props) {
+  const { pokemon } = props;
+
   const classes = useStyles();
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
 
