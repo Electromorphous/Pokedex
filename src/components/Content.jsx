@@ -10,10 +10,17 @@ export default function Content({ pokemons, inputText }) {
       ) : (
         <Grid container>
           {/* left padding */}
-          <Grid item xs={1} />
+          <Grid item xs={2} sm={1} />
 
           {/* content */}
-          <Grid item container xs={10} spacing={3} justifyContent="center">
+          <Grid
+            item
+            container
+            xs={9}
+            sm={10}
+            spacing={3}
+            justifyContent="center"
+          >
             {pokemons.map((pokemon) =>
               pokemon.name.includes(inputText.toLowerCase()) ? (
                 <PokemonCard key={pokemon.id} pokemon={pokemon} />
@@ -24,7 +31,7 @@ export default function Content({ pokemons, inputText }) {
           </Grid>
 
           {/* right padding */}
-          <Grid item xs={1} />
+          <Grid item xs={1} sm={1} />
         </Grid>
       )}
     </>
