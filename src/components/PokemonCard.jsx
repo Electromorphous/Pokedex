@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -21,14 +22,22 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function PokemonCard(props) {
-  const { pokemon } = props;
+export default function PokemonCard({ pokemon }) {
+  const history = useHistory();
 
   const classes = useStyles();
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
 
   return (
-    <Grid className="card-parent" item xs={12} sm={6} md={3} key={pokemon.id}>
+    <Grid
+      className="card-parent"
+      onClick={() => history.push(`/${pokemon.name}`)}
+      item
+      xs={12}
+      sm={6}
+      md={3}
+      key={pokemon.id}
+    >
       <div className="card">
         <Card
           className={classes.card}

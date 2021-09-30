@@ -6,7 +6,7 @@ import "./main.scss";
 
 // removed strict mode, that will fix few double renders
 ReactDOM.render(
-  <Router>
+  <Router basename="/Pokedex">
     <App />
   </Router>,
   document.getElementById("root")
