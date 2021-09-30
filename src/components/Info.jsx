@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({}));
 
 export default function Info() {
   let { name } = useParams();
@@ -11,7 +13,7 @@ export default function Info() {
   useEffect(() => {
     let timer = setTimeout(() => {
       setLoader(false);
-    }, 5000);
+    }, 5500);
     return () => {
       clearTimeout(timer);
     };
@@ -28,13 +30,18 @@ export default function Info() {
 
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
 
+  const classes = useStyles();
+
   return (
     <>
       {info.name ? (
-        <>
-          <img src={imageUrl} alt={info.name} />
-          <h1>{info.name}</h1>
-        </>
+        <div className="pokemon-info">
+          <div className="image">
+            <img className="pokemon-pic" src={imageUrl} alt={info.name} />
+            <div className="overlay"></div>
+          </div>
+          <p className="pokemon-name">{info.name}</p>
+        </div>
       ) : (
         <>
           {loader ? (
