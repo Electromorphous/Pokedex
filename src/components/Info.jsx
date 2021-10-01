@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CircularProgress, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({}));
+import Loader from "./Loader";
+import * as Vibrant from "node-vibrant";
 
 export default function Info() {
   let { name } = useParams();
 
   const [info, setInfo] = useState({});
   const [loader, setLoader] = useState(true);
+  const [bannerColor, setBannerColor] = useState("");
 
   useEffect(() => {
     let timer = setTimeout(() => {
       setLoader(false);
-    }, 5500);
+    }, 7000);
     return () => {
       clearTimeout(timer);
     };
@@ -24,32 +24,43 @@ export default function Info() {
     return data.json();
   }
 
+  async function fetchColor() {
+    let v = new Vibrant(
+      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`
+    );
+    const palette = await v.getPalette();
+    return `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.7)`;
+  }
+
   useEffect(() => {
     fetchDetails().then(setInfo);
   }, []);
 
+  useEffect(() => {
+    console.log("hey");
+    if (info.name) fetchColor().then(setBannerColor);
+  }, [info]);
+
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
-
-  const classes = useStyles();
-
+  console.log(bannerColor);
   return (
     <>
       {info.name ? (
         <div className="pokemon-info">
-          <div className="image">
-            <img className="pokemon-pic" src={imageUrl} alt={info.name} />
-            <div className="overlay"></div>
-          </div>
-          <p className="pokemon-name">{info.name}</p>
+          <div
+            className="banner"
+            style={{ backgroundColor: bannerColor }}
+          ></div>
+          <section className="top">
+            <div className="image">
+              <img className="pokemon-pic" src={imageUrl} alt={info.name} />
+              <div className="overlay"></div>
+            </div>
+            <p className="pokemon-name">{info.name}</p>
+          </section>
         </div>
       ) : (
-        <>
-          {loader ? (
-            <CircularProgress color="secondary" />
-          ) : (
-            <h1>Pokemon not found</h1>
-          )}
-        </>
+        <Loader loader={loader} />
       )}
     </>
   );
