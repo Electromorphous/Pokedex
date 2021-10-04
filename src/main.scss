@@ -52,6 +52,10 @@
     position: fixed;
     width: 100vw;
     height: 250px;
+
+    @media (max-width: 552px) {
+      height: 200px;
+    }
   }
   section.top {
     display: flex;
@@ -60,13 +64,29 @@
     padding-top: 10px;
     height: 300px;
 
+    @media (max-width: 552px) {
+      flex-wrap: wrap;
+      height: 250px;
+    }
+
     .image {
       position: relative;
       width: 17em;
       height: 17em;
       margin-right: 50px;
+      padding: 10px;
       z-index: 1;
       text-align: center;
+
+      @media (max-width: 552px) {
+        width: 13em;
+        height: 13em;
+      }
+      @media (max-width: 500px) {
+        width: 15em;
+        height: 15em;
+        margin: 0 50px 0 50px;
+      }
 
       img.pokemon-pic {
         width: 100%;
@@ -87,9 +107,14 @@
 
     p.pokemon-name {
       font-size: 2.7rem;
+      padding: 10px;
       text-transform: capitalize;
       text-align: center;
       z-index: 1;
+
+      @media (max-width: 500px) {
+        padding: 0;
+      }
     }
   }
 }
