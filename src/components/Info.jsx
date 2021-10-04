@@ -37,12 +37,10 @@ export default function Info() {
   }, []);
 
   useEffect(() => {
-    console.log("hey");
     if (info.name) fetchColor().then(setBannerColor);
   }, [info]);
 
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
-  console.log(bannerColor);
   return (
     <>
       {info.name ? (
