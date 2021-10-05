@@ -8,7 +8,7 @@ function usePokemons() {
   const [pokemons, setPokemons] = useState([]);
 
   async function fetchData() {
-    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=40"); // max limit = 649
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=400"); // max limit = 649
     const res = await data.json();
 
     return Promise.all(
