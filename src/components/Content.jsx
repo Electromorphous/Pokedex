@@ -1,8 +1,11 @@
 import React from "react";
+import { usePokemons } from "../PokemonProvider";
 import { Grid, CircularProgress } from "@material-ui/core";
 import PokemonCard from "./PokemonCard.jsx";
 
-export default function Content({ pokemons, inputText }) {
+export default function Content({ inputText }) {
+  const pokemons = usePokemons();
+
   return (
     <>
       {pokemons.length === 0 ? (

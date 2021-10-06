@@ -31,7 +31,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <Grid
       className="card-parent"
-      onClick={() => history.push(`/${pokemon.name}`)}
+      onClick={() => history.push(`/${pokemon.id}`)}
       item
       xs={12}
       sm={6}

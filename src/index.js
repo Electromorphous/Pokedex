@@ -4,10 +4,11 @@ import { HashRouter as Router } from "react-router-dom";
 import App from "./App.jsx";
 import "./main.scss";
 
-// removed strict mode, that will fix few double renders
 ReactDOM.render(
-  <Router basename="/">
-    <App />
-  </Router>,
+  <React.StrictMode>
+    <Router basename="/">
+      <App />
+    </Router>
+  </React.StrictMode>,
   document.getElementById("root")
 );

@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import Header from "./Header.jsx";
 import Content from "./Content.jsx";
 
-export default function Home({ pokemons }) {
+export default function Home() {
   const [inputText, setInputText] = useState("");
 
   return (
@@ -12,7 +12,7 @@ export default function Home({ pokemons }) {
         <Header inputText={inputText} setInputText={setInputText} />
       </Grid>
       <Grid item xs={12}>
-        <Content {...{ pokemons, inputText }} />
+        <Content inputText={inputText} />
       </Grid>
     </Grid>
   );
