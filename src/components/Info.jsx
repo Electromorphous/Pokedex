@@ -44,6 +44,34 @@ export default function Info() {
     else if (info.id) fetchColor().then(setBannerColor);
   }, [info]);
 
+  const getPokemonType = (type) => {
+    if (type === "grass") return <TypeLabel type="grass" color="ForestGreen" />;
+    if (type === "poison")
+      return <TypeLabel type="poison" color="DarkOrchid" />;
+    if (type === "fire") return <TypeLabel type="fire" color="red" />;
+    if (type === "water") return <TypeLabel type="water" color="DodgerBlue" />;
+    if (type === "normal") return <TypeLabel type="normal" color="chocolate" />;
+    if (type === "fighting") return <TypeLabel type="fighting" color="brown" />;
+    if (type === "ground")
+      return <TypeLabel type="ground" color="DarkGoldenRod" />;
+    if (type === "rock") return <TypeLabel type="rock" color="DarkGrey" />;
+    if (type === "bug") return <TypeLabel type="bug" color="green" />;
+    if (type === "ghost")
+      return <TypeLabel type="ghost" color="LightSlateGrey" />;
+    if (type === "steel") return <TypeLabel type="steel" color="DimGrey" />;
+    if (type === "electric")
+      return <TypeLabel type="electric" color="Gold" dark={true} />;
+    if (type === "psychic")
+      return <TypeLabel type="psychic" color="pink" dark={true} />;
+    if (type === "ice")
+      return <TypeLabel type="ice" color="LightBlue" dark={true} />;
+    if (type === "dragon")
+      return <TypeLabel type="dragon" color="LightCyan" dark={true} />;
+    if (type === "dark") return <TypeLabel type="dark" color="black" />;
+    if (type === "fairy")
+      return <TypeLabel type="fairy" color="LightPink" dark={true} />;
+  };
+
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
   return (
     <>
@@ -63,64 +91,28 @@ export default function Info() {
               <span className="id">{id}</span>
               <div className="types">
                 {info.types.map((obj) => {
-                  if (obj.type.name === "grass")
-                    return <TypeLabel type="grass" color="ForestGreen" />;
-                  if (obj.type.name === "poison")
-                    return <TypeLabel type="poison" color="DarkOrchid" />;
-                  if (obj.type.name === "fire")
-                    return <TypeLabel type="fire" color="red" />;
-                  if (obj.type.name === "water")
-                    return <TypeLabel type="water" color="DodgerBlue" />;
-                  if (obj.type.name === "normal")
-                    return <TypeLabel type="normal" color="chocolate" />;
-                  if (obj.type.name === "fighting")
-                    return <TypeLabel type="fighting" color="brown" />;
-                  if (obj.type.name === "ground")
-                    return <TypeLabel type="ground" color="DarkGoldenRod" />;
-                  if (obj.type.name === "rock")
-                    return <TypeLabel type="rock" color="DarkGrey" />;
-                  if (obj.type.name === "bug")
-                    return <TypeLabel type="bug" color="green" />;
-                  if (obj.type.name === "ghost")
-                    return <TypeLabel type="ghost" color="LightSlateGrey" />;
-                  if (obj.type.name === "steel")
-                    return <TypeLabel type="steel" color="DimGrey" />;
-                  if (obj.type.name === "electric")
-                    return (
-                      <TypeLabel type="electric" color="Gold" dark={true} />
-                    );
-                  if (obj.type.name === "psychic")
-                    return (
-                      <TypeLabel type="psychic" color="pink" dark={true} />
-                    );
-                  if (obj.type.name === "ice")
-                    return (
-                      <TypeLabel type="ice" color="LightBlue" dark={true} />
-                    );
-                  if (obj.type.name === "dragon")
-                    return (
-                      <TypeLabel type="dragon" color="LightCyan" dark={true} />
-                    );
-                  if (obj.type.name === "dark")
-                    return <TypeLabel type="dark" color="black" />;
-                  if (obj.type.name === "fairy")
-                    return (
-                      <TypeLabel type="fairy" color="LightPink" dark={true} />
-                    );
+                  return getPokemonType(obj.type.name);
                 })}
               </div>
             </p>
           </section>
           <section className="stats">
-            <div className="abilities">
+            <div className="basic-info-section">
+              <p>Height: {info.height}</p>
+              <p>Weight: {info.weight}</p>
+              <p>Base experience: {info.base_experience}</p>
+            </div>
+            <div className="ability-section">
               <h1>Abilities</h1>
-              {info.abilities.map((ab) => {
-                return (
-                  <span className="ability" key={ab.slot}>
-                    {ab.ability.name}
-                  </span>
-                );
-              })}
+              <div className="abilities">
+                {info.abilities.map((ab) => {
+                  return (
+                    <div className="ability" key={ab.slot}>
+                      {ab.ability.name}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
         </div>

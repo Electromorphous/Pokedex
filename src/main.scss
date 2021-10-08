@@ -155,12 +155,29 @@ $base-red: rgb(236, 49, 49);
   section.stats {
     margin-top: 20px;
 
-    .abilities {
-      text-align: center;
+    .basic-info-section {
+      text-align: left;
+      font-size: 1.5rem;
+      margin: 20px auto;
       padding: 10px 20px;
       width: fit-content;
       min-width: 200px;
-      margin: 0 auto;
+      max-width: 90%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+
+      @media (max-width: 552px) {
+        font-size: 1rem;
+      }
+    }
+
+    .ability-section {
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px 20px;
+      width: fit-content;
+      min-width: 200px;
+      max-width: 90%;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       border-radius: 20px;
 
@@ -169,23 +186,34 @@ $base-red: rgb(236, 49, 49);
         font-weight: 400;
         margin-bottom: 10px;
       }
-      .ability {
-        padding: 0 10px;
-        font-size: 1.5rem;
+
+      .abilities {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .ability {
+          padding: 0 10px;
+          font-size: 1.5rem;
+        }
       }
 
       @media (max-width: 552px) {
         h1 {
-          font-size: 1.7rem;
+          font-size: 1.5rem;
         }
-        .ability {
-          font-size: 1.2rem;
+
+        .abilities {
+          .ability {
+            font-size: 1.2rem;
+          }
         }
       }
     }
 
     @media (max-width: 552px) {
-      margin-top: 70px;
+      margin-top: 100px;
     }
   }
 }
