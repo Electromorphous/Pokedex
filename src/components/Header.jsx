@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appBarClass: {
-    backgroundColor: "#de3131",
+    backgroundColor: "rgb(236, 49, 49);",
     [theme.breakpoints.up("xs")]: {
       height: 90,
     },

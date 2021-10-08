@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+$base-red: rgb(236, 49, 49);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +9,7 @@
   font-family: Roboto, sans-serif;
 
   ::selection {
-    background-color: red;
+    background-color: $base-red;
     color: white;
   }
 }
@@ -117,6 +119,23 @@
       @media (max-width: 552px) {
         flex: 100%;
         padding: 0;
+      }
+    }
+  }
+
+  section.stats {
+    margin-top: 10px;
+
+    .abilities {
+      text-align: center;
+
+      h1 {
+        font-size: 2em;
+        font-weight: 500;
+      }
+      .ability {
+        padding: 0 10px;
+        font-size: 1.5em;
       }
     }
   }

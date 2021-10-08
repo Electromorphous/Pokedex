@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { usePokemons } from "../PokemonProvider";
+import { usePokemons } from "../PokemonProvider";
 import Loader from "./Loader";
 import * as Vibrant from "node-vibrant";
 
 export default function Info() {
-  // console.log(usePokemons());
-
   let { id } = useParams();
-  // id -= 1;
 
   const [info, setInfo] = useState({});
   const [loader, setLoader] = useState(true);
   const [bannerColor, setBannerColor] = useState("");
-  // const pokemons = usePokemons();
-  // console.log(info);
+  const pokemons = usePokemons();
 
   useEffect(() => {
     let timer = setTimeout(() => {
@@ -28,8 +24,6 @@ export default function Info() {
   async function fetchDetails() {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     return data.json();
-
-    // return pokemons[id];
   }
 
   async function fetchColor() {
@@ -38,8 +32,6 @@ export default function Info() {
     );
     const palette = await v.getPalette();
     return `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.7)`;
-
-    return info.background;
   }
 
   useEffect(() => {
@@ -47,8 +39,8 @@ export default function Info() {
   }, []);
 
   useEffect(() => {
-    // if (info.id) setBannerColor(info.background);
-    if (info.id) fetchColor().then(setBannerColor);
+    if (pokemons.length > 0) setBannerColor(pokemons[id - 1].background);
+    else if (info.id) fetchColor().then(setBannerColor);
   }, [info]);
 
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
@@ -66,6 +58,18 @@ export default function Info() {
               <div className="overlay"></div>
             </div>
             <p className="pokemon-name">{info.name}</p>
+          </section>
+          <section className="stats">
+            <div className="abilities">
+              <h1>Abilities</h1>
+              {info.abilities.map((ab) => {
+                return (
+                  <span className="ability" key={ab.slot}>
+                    {ab.ability.name}
+                  </span>
+                );
+              })}
+            </div>
           </section>
         </div>
       ) : (
