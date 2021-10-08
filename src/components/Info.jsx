@@ -57,7 +57,10 @@ export default function Info() {
               <img className="pokemon-pic" src={imageUrl} alt={info.name} />
               <div className="overlay"></div>
             </div>
-            <p className="pokemon-name">{info.name}</p>
+            <p className="pokemon-name">
+              <span className="name">{info.name}</span>#
+              <span className="id">{id}</span>
+            </p>
           </section>
           <section className="stats">
             <div className="abilities">

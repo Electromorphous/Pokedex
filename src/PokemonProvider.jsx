@@ -26,7 +26,7 @@ export default function PokemonProvider({ children }) {
 
           return {
             ...pokemon,
-            background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.6)`,
+            background: `rgba(${palette.Vibrant._rgb[0]}, ${palette.Vibrant._rgb[1]}, ${palette.Vibrant._rgb[2]}, 0.7)`,
             id,
           };
         })
