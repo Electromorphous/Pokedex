@@ -19,7 +19,8 @@ a.home-link {
     text-decoration: underline;
   }
 }
-.makeStyles-search-4 {
+.makeStyles-search-4,
+.jss4 {
   margin-top: 5px;
 
   @media (max-width: $tab-width) {
@@ -262,6 +263,7 @@ a.home-link {
         }
         span.stat-value {
           position: absolute;
+          top: 1px;
           text-align: right;
           width: 65vw;
           max-width: 620px;
