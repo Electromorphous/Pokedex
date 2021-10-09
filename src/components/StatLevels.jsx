@@ -1,17 +1,22 @@
 import React from "react";
-import { LinearProgress, Typography, Box } from "@material-ui/core";
+import { LinearProgress } from "@material-ui/core";
 
 export default function StatLevels({ stats }) {
   return (
     <>
       {stats.map((obj) => {
         return (
-          <LinearProgress
-            key={obj.stat.name}
-            className="progress-bar"
-            variant="determinate"
-            value={obj.base_stat}
-          />
+          <div className="bar" key={obj.stat.name}>
+            <LinearProgress
+              className="progress"
+              variant="determinate"
+              value={obj.base_stat / 2}
+            />
+            <div className="stat-text">
+              <span className="stat-name">{obj.stat.name}</span>
+              <span className="stat-value">{obj.base_stat}</span>
+            </div>
+          </div>
         );
       })}
     </>

@@ -6,23 +6,17 @@ import InputBase from "@material-ui/core/InputBase";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginBottom: 20,
-    [theme.breakpoints.up("xs")]: {
-      height: 90,
-    },
     [theme.breakpoints.up("sm")]: {
       height: 60,
     },
   },
   appBarClass: {
     backgroundColor: "rgb(236, 49, 49);",
-    [theme.breakpoints.up("xs")]: {
-      height: 90,
-    },
     [theme.breakpoints.up("sm")]: {
       height: 60,
     },
@@ -85,7 +79,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar({ inputText, setInputText }) {
+export default function SearchAppBar({
+  inputText,
+  setInputText,
+  showSearchBar,
+}) {
   const classes = useStyles();
 
   const inputTextHandler = (e) => {
@@ -101,29 +99,35 @@ export default function SearchAppBar({ inputText, setInputText }) {
             <Grid item xs={2} sm={1} />
 
             <Grid item xs={10} sm={3}>
-              <Typography className={classes.title} variant="h4" noWrap>
-                Pokédex
-              </Typography>
+              <a href="/Pokedex" className="home-link">
+                <Typography className={classes.title} variant="h4" noWrap>
+                  Pokédex
+                </Typography>
+              </a>
             </Grid>
 
             <Grid item xs={2} md={3} />
 
             <Grid item>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
+              {showSearchBar ? (
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    value={inputText}
+                    onChange={inputTextHandler}
+                    placeholder="Search"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ "aria-label": "search" }}
+                  />
                 </div>
-                <InputBase
-                  value={inputText}
-                  onChange={inputTextHandler}
-                  placeholder="Search"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </div>
+              ) : (
+                <> </>
+              )}
             </Grid>
 
             {/* right padding */}

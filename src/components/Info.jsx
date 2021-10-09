@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePokemons } from "../PokemonProvider";
+import Header from "./Header";
 import Loader from "./Loader";
 import TypeLabel from "./TypeLabel";
 import StatLevels from "./StatLevels";
@@ -83,6 +84,7 @@ export default function Info() {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
   return (
     <>
+      <Header showSearchBar={false} />
       {info.id ? (
         <div className="pokemon-info">
           <div

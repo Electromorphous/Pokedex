@@ -9,7 +9,11 @@ export default function Home() {
   return (
     <Grid container direction="column">
       <Grid item xs={12}>
-        <Header inputText={inputText} setInputText={setInputText} />
+        <Header
+          inputText={inputText}
+          setInputText={setInputText}
+          showSearchBar={true}
+        />
       </Grid>
       <Grid item xs={12}>
         <Content inputText={inputText} />

@@ -11,7 +11,7 @@ export default function Content({ inputText }) {
       {pokemons.length === 0 ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid container>
+        <Grid container className="content-container">
           {/* left padding */}
           <Grid item xs={2} sm={1} />
 

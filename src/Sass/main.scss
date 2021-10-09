@@ -5,43 +5,73 @@
   margin-left: 46vw;
 }
 
-.card-parent {
-  // content-visibility: auto;
-  // contain-intrinsic-size: 300px;
+a.home-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  width: max-content;
 
-  .card {
-    border-radius: 14px;
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: $shadow;
-      z-index: 10;
-    }
-    transition: all 0.25s;
+  h4 {
+    width: max-content;
+  }
 
-    img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
-      height: 80%;
-      width: 80%;
-      padding-top: 15px;
-      margin: 0 auto;
-      object-fit: contain;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.makeStyles-search-4 {
+  @media (max-width: $tab-width) {
+    margin-bottom: 12px;
+  }
+}
 
-    .overlay {
-      // background: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      left: 0;
-      top: 0;
-      z-index: 1;
-      user-select: none;
+.content-container {
+  margin: 20px 0;
+
+  .card-parent {
+    // content-visibility: auto;
+    // contain-intrinsic-size: 300px;
+
+    .card {
+      border-radius: 14px;
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: $shadow;
+        z-index: 10;
+      }
+      transition: all 0.25s;
+
+      img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img {
+        height: 80%;
+        width: 80%;
+        padding-top: 15px;
+        margin: 0 auto;
+        object-fit: contain;
+      }
+
+      .overlay {
+        // background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        user-select: none;
+      }
     }
+  }
+
+  @media (max-width: $tab-width) {
+    margin-top: 110px;
   }
 }
 
 .pokemon-info {
   .banner {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
   }
@@ -50,7 +80,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
     height: 300px;
 
     @media (max-width: $tab-width) {
@@ -203,15 +232,42 @@
     width: 90%;
     max-width: 700px;
 
-    .progress-bar {
-      margin: 20px 0;
-      background-color: #16d31654;
-      height: 10px;
-      border-radius: 2px;
+    .bar {
+      position: relative;
 
-      * {
-        background-color: #0cbe0c;
+      .progress {
+        margin: 20px 0;
+        background-color: #16d31654;
+        height: 20px;
+        border-radius: 5px;
+
+        * {
+          background-color: #0cbe0c;
+        }
+      }
+
+      .stat-text {
+        position: absolute;
+        color: white;
+        top: 0;
+        z-index: 20;
+
+        span.stat-name {
+          position: absolute;
+          left: 5px;
+          width: max-content;
+        }
+        span.stat-value {
+          position: absolute;
+          text-align: right;
+          width: 65vw;
+          max-width: 620px;
+        }
       }
     }
+  }
+
+  @media (max-width: $tab-width) {
+    padding-top: 80px;
   }
 }
