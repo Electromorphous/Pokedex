@@ -20,8 +20,11 @@ a.home-link {
   }
 }
 .makeStyles-search-4 {
+  margin-top: 5px;
+
   @media (max-width: $tab-width) {
-    margin-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 }
 
