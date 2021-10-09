@@ -180,6 +180,17 @@ a.home-link {
 
       text-align: left;
       font-size: 1.5rem;
+      width: 70%;
+      max-width: 200px;
+
+      p {
+        position: relative;
+
+        span.right {
+          position: absolute;
+          right: 0;
+        }
+      }
 
       @media (max-width: $tab-width) {
         font-size: 1.2rem;
@@ -252,17 +263,18 @@ a.home-link {
 
       .stat-text {
         position: absolute;
-        color: white;
         top: 0;
         z-index: 20;
 
         span.stat-name {
           position: absolute;
+          color: white;
           left: 5px;
           width: max-content;
         }
         span.stat-value {
           position: absolute;
+          color: green;
           top: 1px;
           text-align: right;
           width: 65vw;

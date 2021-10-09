@@ -108,9 +108,15 @@ export default function Info() {
           </section>
           <section className="properties">
             <div className="basic-info-section">
-              <p>Height: {info.height}</p>
-              <p>Weight: {info.weight}</p>
-              <p>Base experience: {info.base_experience}</p>
+              <p>
+                Height <span className="right">{info.height}</span>
+              </p>
+              <p>
+                Weight <span className="right"> {info.weight}</span>
+              </p>
+              <p>
+                Base XP <span className="right"> {info.base_experience}</span>
+              </p>
             </div>
             <div className="ability-section">
               <h1>Abilities</h1>
