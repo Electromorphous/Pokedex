@@ -134,7 +134,7 @@
     }
   }
 
-  section.stats {
+  section.properties {
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -191,6 +191,27 @@
 
     @media (max-width: $tab-width) {
       margin-top: 80px;
+    }
+  }
+
+  section.stats {
+    @include stats-section();
+
+    position: relative;
+    margin: 10px auto 50px auto;
+    padding: 5px 30px;
+    width: 90%;
+    max-width: 700px;
+
+    .progress-bar {
+      margin: 20px 0;
+      background-color: #16d31654;
+      height: 10px;
+      border-radius: 2px;
+
+      * {
+        background-color: #0cbe0c;
+      }
     }
   }
 }

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePokemons } from "../PokemonProvider";
 import Loader from "./Loader";
-import * as Vibrant from "node-vibrant";
 import TypeLabel from "./TypeLabel";
+import StatLevels from "./StatLevels";
+import * as Vibrant from "node-vibrant";
 
 export default function Info() {
   let { id } = useParams();
@@ -45,31 +46,38 @@ export default function Info() {
   }, [info]);
 
   const getPokemonType = (type) => {
-    if (type === "grass") return <TypeLabel type="grass" color="ForestGreen" />;
+    if (type === "grass")
+      return <TypeLabel key={1} type="grass" color="ForestGreen" />;
     if (type === "poison")
-      return <TypeLabel type="poison" color="DarkOrchid" />;
-    if (type === "fire") return <TypeLabel type="fire" color="red" />;
-    if (type === "water") return <TypeLabel type="water" color="DodgerBlue" />;
-    if (type === "normal") return <TypeLabel type="normal" color="chocolate" />;
-    if (type === "fighting") return <TypeLabel type="fighting" color="brown" />;
+      return <TypeLabel key={2} type="poison" color="DarkOrchid" />;
+    if (type === "fire") return <TypeLabel key={3} type="fire" color="red" />;
+    if (type === "water")
+      return <TypeLabel key={4} type="water" color="DodgerBlue" />;
+    if (type === "normal")
+      return <TypeLabel key={5} type="normal" color="chocolate" />;
+    if (type === "fighting")
+      return <TypeLabel key={6} type="fighting" color="brown" />;
     if (type === "ground")
-      return <TypeLabel type="ground" color="DarkGoldenRod" />;
-    if (type === "rock") return <TypeLabel type="rock" color="DarkGrey" />;
-    if (type === "bug") return <TypeLabel type="bug" color="green" />;
+      return <TypeLabel key={7} type="ground" color="DarkGoldenRod" />;
+    if (type === "rock")
+      return <TypeLabel key={8} type="rock" color="DarkGrey" />;
+    if (type === "bug") return <TypeLabel key={9} type="bug" color="green" />;
     if (type === "ghost")
-      return <TypeLabel type="ghost" color="LightSlateGrey" />;
-    if (type === "steel") return <TypeLabel type="steel" color="DimGrey" />;
+      return <TypeLabel key={10} type="ghost" color="LightSlateGrey" />;
+    if (type === "steel")
+      return <TypeLabel key={11} type="steel" color="DimGrey" />;
     if (type === "electric")
-      return <TypeLabel type="electric" color="Gold" dark={true} />;
+      return <TypeLabel key={12} type="electric" color="Gold" dark={true} />;
     if (type === "psychic")
-      return <TypeLabel type="psychic" color="pink" dark={true} />;
+      return <TypeLabel key={13} type="psychic" color="pink" dark={true} />;
     if (type === "ice")
-      return <TypeLabel type="ice" color="LightBlue" dark={true} />;
+      return <TypeLabel key={14} type="ice" color="LightBlue" dark={true} />;
     if (type === "dragon")
-      return <TypeLabel type="dragon" color="LightCyan" dark={true} />;
-    if (type === "dark") return <TypeLabel type="dark" color="black" />;
+      return <TypeLabel key={15} type="dragon" color="LightCyan" dark={true} />;
+    if (type === "dark")
+      return <TypeLabel key={16} type="dark" color="black" />;
     if (type === "fairy")
-      return <TypeLabel type="fairy" color="LightPink" dark={true} />;
+      return <TypeLabel key={17} type="fairy" color="LightPink" dark={true} />;
   };
 
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${info.id}.svg`;
@@ -96,7 +104,7 @@ export default function Info() {
               </div>
             </p>
           </section>
-          <section className="stats">
+          <section className="properties">
             <div className="basic-info-section">
               <p>Height: {info.height}</p>
               <p>Weight: {info.weight}</p>
@@ -114,6 +122,9 @@ export default function Info() {
                 })}
               </div>
             </div>
+          </section>
+          <section className="stats">
+            <StatLevels stats={info.stats} />
           </section>
         </div>
       ) : (
