@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Grid, IconButton } from "@material-ui/core";
 import { usePokemons } from "../PokemonProvider";
 import Header from "./Header";
 import Loader from "./Loader";
@@ -85,59 +86,71 @@ export default function Info() {
   return (
     <>
       <Header showSearchBar={false} />
-      {info.id ? (
-        <div className="pokemon-info">
-          <div
-            className="banner"
-            style={{ backgroundColor: bannerColor }}
-          ></div>
-          <section className="top">
-            <div className="image">
-              <img className="pokemon-pic" src={imageUrl} alt={info.name} />
-              <div className="overlay"></div>
+      <Grid container>
+        <Grid item xs={2}>
+          <IconButton className="navButton">←</IconButton>
+        </Grid>
+
+        <Grid item xs={8}>
+          {info.id ? (
+            <div className="pokemon-info">
+              <div
+                className="banner"
+                style={{ backgroundColor: bannerColor }}
+              ></div>
+              <section className="top">
+                <div className="image">
+                  <img className="pokemon-pic" src={imageUrl} alt={info.name} />
+                  <div className="overlay"></div>
+                </div>
+                <p className="title">
+                  <span className="name">{info.name}</span>#
+                  <span className="id">{id}</span>
+                  <div className="types">
+                    {info.types.map((obj) => {
+                      return getPokemonType(obj.type.name);
+                    })}
+                  </div>
+                </p>
+              </section>
+              <section className="properties">
+                <div className="basic-info-section">
+                  <p>
+                    Height <span className="right">{info.height}</span>
+                  </p>
+                  <p>
+                    Weight <span className="right"> {info.weight}</span>
+                  </p>
+                  <p>
+                    Base XP{" "}
+                    <span className="right"> {info.base_experience}</span>
+                  </p>
+                </div>
+                <div className="ability-section">
+                  <h1>Abilities</h1>
+                  <div className="abilities">
+                    {info.abilities.map((ab) => {
+                      return (
+                        <div className="ability" key={ab.slot}>
+                          {ab.ability.name}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+              <section className="stats">
+                <StatLevels stats={info.stats} />
+              </section>
             </div>
-            <p className="title">
-              <span className="name">{info.name}</span>#
-              <span className="id">{id}</span>
-              <div className="types">
-                {info.types.map((obj) => {
-                  return getPokemonType(obj.type.name);
-                })}
-              </div>
-            </p>
-          </section>
-          <section className="properties">
-            <div className="basic-info-section">
-              <p>
-                Height <span className="right">{info.height}</span>
-              </p>
-              <p>
-                Weight <span className="right"> {info.weight}</span>
-              </p>
-              <p>
-                Base XP <span className="right"> {info.base_experience}</span>
-              </p>
-            </div>
-            <div className="ability-section">
-              <h1>Abilities</h1>
-              <div className="abilities">
-                {info.abilities.map((ab) => {
-                  return (
-                    <div className="ability" key={ab.slot}>
-                      {ab.ability.name}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-          <section className="stats">
-            <StatLevels stats={info.stats} />
-          </section>
-        </div>
-      ) : (
-        <Loader loader={loader} />
-      )}
+          ) : (
+            <Loader loader={loader} />
+          )}
+        </Grid>
+        <Grid item sm={2}>
+          <IconButton className="navButton">→</IconButton>
+        </Grid>
+      </Grid>
     </>
   );
 }
