@@ -10,7 +10,7 @@ export default function StatLevels({ stats }) {
             <LinearProgress
               className="progress"
               variant="determinate"
-              value={obj.base_stat / 2.5}
+              value={obj.base_stat / 2}
             />
             <div className="stat-text">
               <span className="stat-name">{obj.stat.name}</span>

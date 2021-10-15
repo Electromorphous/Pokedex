@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 $base-red: rgb(236, 49, 49);
-$tab-width: 600px;
+$tab-width: 700px;
 $shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 @mixin stats-section {
   background-color: #ffffff88;
-  margin: 10px 20px;
+  margin: 10px;
   padding: 20px 30px;
   min-width: 200px;
   max-width: 90%;

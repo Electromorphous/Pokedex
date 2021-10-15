@@ -6,7 +6,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Grid } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,12 +24,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: "block",
-    width: "max-content",
-
-    "&:hover": {
-      textDecoration: "underline",
-      cursor: "pointer",
-    },
   },
   search: {
     position: "relative",
@@ -90,7 +84,6 @@ export default function SearchAppBar({
   setInputText,
   showSearchBar,
 }) {
-  const history = useHistory();
   const classes = useStyles();
 
   const inputTextHandler = (e) => {
@@ -106,16 +99,11 @@ export default function SearchAppBar({
             <Grid item xs={2} sm={1} />
 
             <Grid item xs={10} sm={3}>
-              <Typography
-                onClick={() => {
-                  history.push("/");
-                }}
-                className={classes.title}
-                variant="h4"
-                noWrap
-              >
-                Pokédex
-              </Typography>
+              <a href="/Pokedex" className="home-link">
+                <Typography className={classes.title} variant="h4" noWrap>
+                  Pokédex
+                </Typography>
+              </a>
             </Grid>
 
             <Grid item xs={2} md={3} />
