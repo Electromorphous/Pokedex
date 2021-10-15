@@ -12,7 +12,7 @@ export default function PokemonProvider({ children }) {
     const [array, setArray] = useState([]);
 
     async function fetchData() {
-      const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=300"); // max limit = 649
+      const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=30"); // max limit = 649
       const res = await data.json();
 
       return Promise.all(
