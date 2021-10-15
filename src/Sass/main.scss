@@ -91,7 +91,6 @@ a.home-link {
     height: 100vh;
   }
   section.top {
-    border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -191,9 +190,6 @@ a.home-link {
       @include stats-section();
 
       text-align: left;
-<<<<<<< HEAD
-      font-size: 1.5rem;
-=======
       font-size: 1.3rem;
       width: 70%;
       max-width: 200px;
@@ -206,7 +202,6 @@ a.home-link {
           right: 0;
         }
       }
->>>>>>> parent of 2a21d61... Revert "Revert "fix stats and home link""
 
       @media (max-width: $tab-width) {
         font-size: 1.2rem;
