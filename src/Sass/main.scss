@@ -5,20 +5,6 @@
   margin-left: 46vw;
 }
 
-a.home-link {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-  width: max-content;
-
-  h4 {
-    width: max-content;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
 .makeStyles-search-4,
 .jss4 {
   margin-top: 5px;
@@ -71,17 +57,6 @@ a.home-link {
   }
 }
 
-.navButton {
-  color: black !important;
-  top: 30% !important;
-  left: 40%;
-  z-index: 2;
-
-  @media (max-width: $tab-width) {
-    left: 30%;
-  }
-}
-
 .pokemon-info {
   .banner {
     position: fixed;
@@ -91,7 +66,6 @@ a.home-link {
     height: 100vh;
   }
   section.top {
-    border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -108,7 +82,7 @@ a.home-link {
       height: 17em;
       max-width: 80%;
       margin-right: 50px;
-      // padding-left: 30px;
+      padding-left: 30px;
       z-index: 1;
       text-align: center;
 
@@ -139,7 +113,7 @@ a.home-link {
 
     p.title {
       font-size: 1.5rem;
-      // padding-right: 30px;
+      padding-right: 30px;
       text-transform: capitalize;
       text-align: left;
       z-index: 1;
@@ -191,7 +165,7 @@ a.home-link {
       @include stats-section();
 
       text-align: left;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       width: 70%;
       max-width: 200px;
 
@@ -256,7 +230,7 @@ a.home-link {
     position: relative;
     margin: 10px auto 50px auto;
     padding: 5px 30px;
-    // width: 90%;
+    width: 90%;
     max-width: 700px;
 
     .bar {
@@ -269,7 +243,7 @@ a.home-link {
         border-radius: 5px;
 
         * {
-          background-color: #1cce1c;
+          background-color: #0cbe0c;
         }
       }
 
@@ -297,9 +271,6 @@ a.home-link {
   }
 
   @media (max-width: $tab-width) {
-    padding-top: 20px;
-  }
-  @media (max-width: 600px) {
     padding-top: 80px;
   }
 }
